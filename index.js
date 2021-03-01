@@ -21,10 +21,12 @@ app.get('/api/student/:id',(req,res)=>{
 
 
 //renvoir tous les etudiants du tableau
+
 app.get('/api/student',(req,res)=>{
     res.send(students);
 })
 
+// ajout d'un nouveau etudiant dans le tableau avec securité (le nom ne doit pas etre infieure à 3 caracteres et elle doit existé)
 app.post('/api/student',(req,res)=>{
     if(!req.body.name || req.body.name.length<3)
       return res.status(400).send('Name is required with 3 characters at least')
